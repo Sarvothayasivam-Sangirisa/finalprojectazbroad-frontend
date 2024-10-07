@@ -1,0 +1,23 @@
+.customize-room-section {
+    background-color: #f7f7f7; /* Light background for contrast */
+  }
+  
+  .feature-item {
+    margin: 20px 0; /* Spacing between feature items */
+  }
+  
+  .feature-icon {
+    font-size: 2rem; /* Larger icon size */
+    color: #f0a6a6; /* Primary color for icons */
+  }
+  
+  .customize-room-image img {
+    max-height: 400px; /* Limit the height of the image */
+    object-fit: cover; /* Maintain aspect ratio */
+  }
+  
+  .subheading {
+    font-size: 1.2rem; /* Subheading font size */
+    color: #555; /* Slightly darker color for better readability */
+  }
+  
