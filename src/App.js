@@ -48,7 +48,7 @@ function App() {
     <div className="app-container">
       <CustomNavbar user={user} onLogout={handleLogout} isAdmin={isAdmin} />
       <Routes>
-        <Route path="/" element={<><HeroSection /><Plans /><Services /><CusRoom/><FAQ /><Chatbot/></>} />
+        <Route path="/" element={<><HeroSection /><CusRoom/><Plans /><Services /><FAQ /><Chatbot/></>} />
         <Route path="/login" element={<Login onLogin={handleLogin} />} />
         <Route path="/signup" element={<SignupForm />} />
         <Route path="/admin-dashboard" element={<AdminDashboard />} />

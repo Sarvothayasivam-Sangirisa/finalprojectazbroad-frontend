@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import { Container, Row, Col, Card, Button, Table, Pagination } from 'react-bootstrap';
+import { Container, Row, Col, Button, Table, Pagination, Modal } from 'react-bootstrap';
 import axios from 'axios';
 
 const AdminCard = () => {
   const [serviceBookings, setServiceBookings] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const bookingsPerPage = 5; // Display 5 bookings per page
+  const BASE_URL = 'http://localhost:5000/uploads/'; // Base URL for images
+  const [showModal, setShowModal] = useState(false); // Modal visibility state
+  const [selectedImage, setSelectedImage] = useState(''); // State for the selected image
 
   // Fetch all service bookings on component mount
   useEffect(() => {
@@ -41,6 +44,17 @@ const AdminCard = () => {
     }
   };
 
+  // Function to handle image click
+  const handleImageClick = (image) => {
+    setSelectedImage(image);
+    setShowModal(true);
+  };
+
+  const handleCloseModal = () => {
+    setShowModal(false);
+    setSelectedImage(''); // Reset the selected image
+  };
+
   return (
     <section id="bookings" className="full-screen d-flex flex-column justify-content-center align-items-center text-center">
       <Container fluid>
@@ -59,6 +73,7 @@ const AdminCard = () => {
                   <th>Duration (months)</th>
                   <th>Total Amount ($)</th>
                   <th>Booked On</th>
+                  <th>Image</th> {/* New column for images */}
                   <th>Actions</th>
                 </tr>
               </thead>
@@ -72,6 +87,18 @@ const AdminCard = () => {
                     <td>{booking.planduration}</td>
                     <td>${booking.plantotalAmount !== undefined ? booking.plantotalAmount.toFixed(2) : 'N/A'}</td>
                     <td>{new Date(booking.createdAt).toLocaleString()}</td>
+                    <td>
+                      {booking.serviceImage ? ( // Assuming 'serviceImage' contains the filename of the image
+                        <img
+                          src={`${BASE_URL}${booking.serviceImage}`} // Use the full URL
+                          alt="Service Booking"
+                          style={{ width: '50px', height: '50px', objectFit: 'cover', cursor: 'pointer' }} // Adjust styling as needed
+                          onClick={() => handleImageClick(`${BASE_URL}${booking.serviceImage}`)} // Open image in modal
+                        />
+                      ) : (
+                        'No Image'
+                      )}
+                    </td>
                     <td>
                       <Button variant="danger" onClick={() => handleDeleteBooking(booking._id)}>
                         Delete
@@ -99,6 +126,16 @@ const AdminCard = () => {
           </Col>
         </Row>
       </Container>
+
+      {/* Modal for displaying the enlarged image */}
+      <Modal show={showModal} onHide={handleCloseModal}>
+        <Modal.Header closeButton>
+          <Modal.Title>Service Booking Image</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <img src={selectedImage} alt="Enlarged Service Booking" style={{ width: '100%', height: 'auto' }} />
+        </Modal.Body>
+      </Modal>
     </section>
   );
 };

@@ -15,7 +15,8 @@ const ConfirmPaymentplan = () => {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [isAddressValid, setIsAddressValid] = useState(false);
-  const [disableInputs, setDisableInputs] = useState(false); // State to control input disable
+  const [disableInputs, setDisableInputs] = useState(false);
+  const [uploadedImage, setUploadedImage] = useState(null); // State for uploaded image
 
   const location = useLocation();
   const navigate = useNavigate();
@@ -67,23 +68,34 @@ const ConfirmPaymentplan = () => {
   const handleProceed = () => {
     const isValid = validateForm();
     if (isValid) {
-      setDisableInputs(true); // Disable inputs after proceeding to payment
+      setDisableInputs(true);
     }
+  };
+
+  const handleImageUpload = (e) => {
+    setUploadedImage(e.target.files[0]); // Save the uploaded file
   };
 
   const handleSuccessPayment = async (details) => {
     try {
-      const bookingData = {
-        planName: serviceName,
-        planserviceLocation: serviceLocation,
-        planpaymentId: details.id,
-        planuser: username, 
-        planemail: email,
-        planduration: duration,
-        plantotalAmount: totalAmount
-      };
+      const formData = new FormData();
+      formData.append('planName', serviceName);
+      formData.append('planserviceLocation', serviceLocation);
+      formData.append('planpaymentId', details.id);
+      formData.append('planuser', username);
+      formData.append('planemail', email);
+      formData.append('planduration', duration);
+      formData.append('plantotalAmount', totalAmount);
+      if (uploadedImage) {
+        formData.append('serviceImage', uploadedImage); // Add image to form data
+      }
 
-      const response = await axios.post('http://localhost:5000/api/bookings', bookingData);
+      const response = await axios.post('http://localhost:5000/api/bookings', formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data', // Set appropriate headers
+        },
+      });
+
       setPaymentStatus({ success: true, message: response.data.message });
     } catch (error) {
       console.error('Error processing payment:', error.response ? error.response.data : error.message);
@@ -112,7 +124,7 @@ const ConfirmPaymentplan = () => {
               value={serviceLocation}
               onChange={(e) => setServiceLocation(e.target.value)}
               required
-              disabled={disableInputs} // Disable if inputs should be locked
+              disabled={disableInputs}
             />
             {validationError && <Alert variant="danger">{validationError}</Alert>}
           </Form.Group>
@@ -126,12 +138,16 @@ const ConfirmPaymentplan = () => {
             </Form.Control>
           </Form.Group>
 
-          {/* Proceed to Payment Button */}
+          {/* Image upload */}
+          <Form.Group>
+            <Form.Label>Upload Service Location Image (Optional)</Form.Label>
+            <Form.Control type="file" onChange={handleImageUpload} disabled={disableInputs} />
+          </Form.Group>
+
           {!isAddressValid ? (
             <Button variant="primary" className="mt-3 cs-button" onClick={handleProceed}>Proceed to Payment</Button>
           ) : null}
 
-          {/* PayPal Payment Button */}
           {isAddressValid && (
             <>
               <h3>Payment Information</h3>
@@ -142,9 +158,9 @@ const ConfirmPaymentplan = () => {
                     return actions.order.create({
                       purchase_units: [{
                         amount: {
-                          value: totalAmount.toFixed(2)
-                        }
-                      }]
+                          value: totalAmount.toFixed(2),
+                        },
+                      }],
                     });
                   }}
                   onApprove={async (data, actions) => {
@@ -162,6 +178,6 @@ const ConfirmPaymentplan = () => {
       </div>
     </Container>
   );
-};
+}; 
 
 export default ConfirmPaymentplan;

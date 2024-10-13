@@ -10,7 +10,7 @@ import AdminFAQ from '../pages/admin/AdminFAQ';
 const Admin = () => {
   return (
     <div>
-      <AdminHeroSection />
+      {/* <AdminHeroSection /> */}
       <AdminCard />
       <AdminCardService />
       <AdminUser/>

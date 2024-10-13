@@ -34,18 +34,18 @@ const Plans = () => {
   };
 
   return (
-    <section id="plans" className="service-plans section bg-light full-screen">
+    <section id="plans" className="service-plans section bg-light py-5">
       <Container>
         <h2 className="text-center mb-4">Our Service Plans</h2>
         <Row>
           {plans.map(plan => (
-            <Col md={4} key={plan._id}>
-              <Card className="text-center p-4 shadow-lg">
+            <Col xs={12} sm={12} md={6} lg={4} key={plan._id} className="mb-4">
+              <Card className="text-center p-4 shadow-lg h-100">
                 <h3>{plan.planType} Plan</h3>
                 <h4>${plan.planAmount.toFixed(2)}</h4>
                 <p>{plan.planDescription}</p>
                 <Button 
-                  variant="primary" className='cs-button'
+                  variant="primary" className="cs-button w-100"
                   onClick={() => handleChoosePlan(plan._id, plan.planType, plan.planAmount)}>
                   Choose Plan
                 </Button>

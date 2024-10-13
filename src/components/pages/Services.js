@@ -25,17 +25,19 @@ const Services = () => {
   };
 
   return (
-    <section id="services" className="services section full-screen">
+    <section id="services" className="services section py-5">
       <Container>
         <h2 className="text-center mb-4">Our Services</h2>
-        <Row className="no-gutters">
+        <Row className="justify-content-center">
           {services.map(service => (
-            <Col md={3} key={service._id} className="mb-4">
-              <Card className="text-center p-4 shadow-lg service-card">
+            <Col xs={12} sm={6} md={4} lg={3} key={service._id} className="mb-4">
+              <Card className="text-center p-4 shadow-lg h-100 service-card">
                 <h5>{service.serviceName}</h5>
                 <p>{service.serviceDescription}</p>
                 <p><strong>${service.serviceAmountPerHour} / hour</strong></p>
-                <Button variant="primary" className="mt-3 cs-button" onClick={() => handleBookNow(service)}>
+                <Button 
+                  variant="primary" className="mt-3 cs-button w-100"
+                  onClick={() => handleBookNow(service)}>
                   Book Now
                 </Button>
               </Card>

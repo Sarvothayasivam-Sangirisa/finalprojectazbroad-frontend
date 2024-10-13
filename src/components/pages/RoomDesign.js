@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import axios from 'axios'; // Import axios for API calls
 import '../style/RoomDesign.css';
+
 const RoomDesign = () => {
   const [roomImage, setRoomImage] = useState(null);
   const [furniture, setFurniture] = useState([]); // Store multiple furniture items
@@ -211,6 +212,18 @@ const RoomDesign = () => {
     }
   };
 
+  // Function to download the final customized room image
+  const downloadCanvasImage = () => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+
+    const image = canvas.toDataURL('image/png');
+    const link = document.createElement('a');
+    link.href = image;
+    link.download = 'customized-room-design.png';
+    link.click();
+  };
+
   useEffect(() => {
     drawCanvas();
   }, [roomImage, furniture, selectedFurniture]);
@@ -250,13 +263,16 @@ const RoomDesign = () => {
         <canvas ref={canvasRef} width={800} height={600}></canvas>
       </div>
 
-     
       {selectedFurniture && (
-            <button className="delete-button" onClick={deleteSelectedFurniture}>
-              Delete Selected Furniture
-            </button>
-          )}
+        <button className="delete-button" onClick={deleteSelectedFurniture}>
+          Delete Selected Furniture
+        </button>
+      )}
 
+      {/* New Download Button */}
+      <button className="download-button" onClick={downloadCanvasImage}>
+        Download Room Design
+      </button>
     </div>
   );
 };
