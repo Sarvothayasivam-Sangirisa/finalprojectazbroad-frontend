@@ -16,6 +16,7 @@ import Card from './components/pages/Card';
 import Room from './components/pages/RoomDesign';
 import CusRoom from './components/pages/CustomizeRoomSection';
 import Chatbot from './components/pages/Chatbot';
+import Servicesection from './components/pages/ServicesSection';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 
@@ -48,7 +49,7 @@ function App() {
     <div className="app-container">
       <CustomNavbar user={user} onLogout={handleLogout} isAdmin={isAdmin} />
       <Routes>
-        <Route path="/" element={<><HeroSection /><CusRoom/><Plans /><Services /><FAQ /><Chatbot/></>} />
+      <Route path="/" element={<><HeroSection /><CusRoom/><Plans /><Services /><FAQ /><Servicesection/></>} />
         <Route path="/login" element={<Login onLogin={handleLogin} />} />
         <Route path="/signup" element={<SignupForm />} />
         <Route path="/admin-dashboard" element={<AdminDashboard />} />

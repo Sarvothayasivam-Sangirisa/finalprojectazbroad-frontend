@@ -26,7 +26,7 @@
 
 /* Hero Section */
 .hero-section {
-  background-color: #8f2347; /* Hero background color */
+  background-color: #4e021c; /* Hero background color */
   color: white;
 }
 
@@ -43,13 +43,14 @@
 
 /* Change the background color of the active accordion header */
 .accordion-button:not(.collapsed) {
-  background-color: #f0a6a6 !important; /* Active state background color */
+  background-color: #8f2347 !important; /* Active state background color */
   color: white; /* Change text color for better contrast (optional) */
 }
 
 /* Change the background color of the accordion body */
 .accordion-body {
-  background-color: #f0a6a6; /* Body color (optional) */
+  background-color: #8f2347; /* Body color (optional) */
+  color: white;
 }
 
 /* Change the hover state of the accordion header */
@@ -121,7 +122,7 @@
   box-shadow: none; /* Remove Bootstrap focus outline */
 }
 .same-size {
-  height: 250px; /* Set a fixed height for both images */
+  height: 290px; /* Set a fixed height for both images */
   object-fit: cover; /* Maintain aspect ratio and cover the entire area */
   width: 100%; /* Make sure the images are responsive */
 }
@@ -450,4 +451,54 @@
     width: 100%;
     height: auto;
   }
+}
+
+/* try */
+#services {
+  position: relative;
+  background-image: url('../src/components/Image/home\ img.webp'); /* Add your image here */
+  background-attachment: fixed; /* This makes the image scroll with a parallax effect */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+#services .text-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  text-align: center;
+  z-index: 2;
+}
+
+#services h2 {
+  font-size: 4rem;
+  font-weight: bold;
+  color: #ffffff; /* White color for text */
+}
+
+#services .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Dark overlay for better readability */
+}
+
+
+carousel-indicators li {
+  background-color: #8f2347; /* Set the inactive color */
+  border-color: #8f2347;
+}
+
+.carousel-indicators .active {
+  background-color: #a04565; /* Set the active color */
 }

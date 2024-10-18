@@ -1,0 +1,27 @@
+.parallax-section {
+    background-image: url('../Image/b1.jpg'); /* Replace with your image path */
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+  }
+  
+  .plan-card {
+    background-color: rgba(255, 255, 255, 0.85); /* Make cards semi-transparent */
+    border: none;
+    border-radius: 10px;
+  }
+  
+  .service-plans {
+    position: relative;
+    z-index: 2; /* Keep content above the background image */
+  }
+  
+  .section {
+    padding: 100px 0;
+  }
+  
+  .bg-light {
+    background-color: transparent !important; /* Keep the background of the section transparent */
+  }
+  

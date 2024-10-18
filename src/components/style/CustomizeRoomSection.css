@@ -1,23 +1,70 @@
 .customize-room-section {
-    background-color: #f7f7f7; /* Light background for contrast */
+  background-color: #f7f7f7;
+  padding: 100px 0; /* Increase padding for better spacing */
+  min-height: 100vh; /* Ensure the section covers the full screen height */
+  display: flex;
+  align-items: center; /* Vertically center content */
+  justify-content: center;
+ /* Add a background image */
+  background-size: cover; /* Ensure the image covers the entire background */
+  background-position: center;
+  color: #333;
+}
+
+.customize-room-section h2 {
+  font-size: 3rem;
+  font-weight: bold;
+  color: #8f2347; /* Main color for the heading */
+  margin-bottom: 20px;
+}
+
+.subheading1 {
+  font-size: 1.5rem; /* Increase font size for subheading */
+  color: #555; /* Slightly darker color for readability */
+  margin-bottom: 30px;
+}
+
+.cus-button {
+  font-size: 1.25rem; /* Font size for the button */
+  padding: 12px 30px; /* Adjust button size */
+  background-color: #8f2347; /* Button background color */
+  border: none; /* Remove border */
+  border-radius: 30px; /* Add rounded corners for a modern look */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Add shadow to lift the button */
+  transition: all 0.3s ease; /* Smooth hover transition */
+  color: white; /* Text color */
+}
+
+.cus-button:hover {
+  background-color: #761c3a; /* Darken the button color on hover */
+  transform: translateY(-5px); /* Add a slight lift on hover */
+  cursor: pointer; /* Change cursor to pointer on hover */
+}
+
+
+.customize-room-image img {
+  max-height: 500px;
+  width: 100%; /* Ensure the image takes full width */
+  object-fit: cover;
+  border-radius: 15px; /* Add rounded corners */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Add shadow to the image */
+}
+
+@media (max-width: 768px) {
+  .customize-room-section h2 {
+    font-size: 2.5rem; /* Responsive font size for smaller screens */
   }
-  
-  .feature-item {
-    margin: 20px 0; /* Spacing between feature items */
+
+  .subheading1 {
+    font-size: 1.25rem;
   }
-  
-  .feature-icon {
-    font-size: 2rem; /* Larger icon size */
-    color: #f0a6a6; /* Primary color for icons */
+
+  .cs-button {
+    font-size: 1.1rem;
+    padding: 10px 25px;
   }
-  
+
   .customize-room-image img {
-    max-height: 400px; /* Limit the height of the image */
-    object-fit: cover; /* Maintain aspect ratio */
+    max-height: 350px; /* Smaller image height for mobile */
   }
-  
-  .subheading {
-    font-size: 1.2rem; /* Subheading font size */
-    color: #555; /* Slightly darker color for better readability */
-  }
-  
+}

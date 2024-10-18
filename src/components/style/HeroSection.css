@@ -1,0 +1,40 @@
+@keyframes fadeInAnimation {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .fadeIn {
+    animation: fadeInAnimation 1s ease-in-out;
+  }
+  
+  /* You can adjust the timing to stagger animations */
+  .subheading {
+    animation-delay: 0.2s;
+  }
+  
+  h1 {
+    animation-delay: 0.4s;
+  }
+  
+  .benefits-list {
+    animation-delay: 0.6s;
+  }
+  
+  .call-us-button {
+    animation-delay: 0.8s;
+  }
+  
+  .icon-item {
+    animation-delay: 1s;
+  }
+  
+
+
+
+  /* try */

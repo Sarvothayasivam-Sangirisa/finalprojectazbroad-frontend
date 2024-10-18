@@ -140,7 +140,7 @@ const ConfirmPaymentplan = () => {
 
           {/* Image upload */}
           <Form.Group>
-            <Form.Label>Upload Service Location Image (Optional)</Form.Label>
+            <Form.Label>Upload Customized room Image (Optional)</Form.Label>
             <Form.Control type="file" onChange={handleImageUpload} disabled={disableInputs} />
           </Form.Group>
 
