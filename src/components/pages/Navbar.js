@@ -32,11 +32,11 @@ const CustomNavbar = ({ user, onLogout, isAdmin }) => {
               {!isAdmin && (
                 <>
                   <Nav.Link href="/">Home</Nav.Link>
-                  <Nav.Link href="#Personalize">Personalize</Nav.Link>
                 <Nav.Link href="#plans">Plans</Nav.Link>
                 <Nav.Link href="#services">Services</Nav.Link>
-               <Nav.Link href="#faq">FAQ</Nav.Link>
-               <Nav.Link href="#grantee">Guarantee</Nav.Link>
+                <Nav.Link href="#Personalize">Personalize</Nav.Link>
+                <Nav.Link href="#faq">FAQ</Nav.Link>
+                <Nav.Link href="#grantee">Guarantee</Nav.Link>
                   <Button variant="link" onClick={handleChatbotClick} className="chatbot-icon">
                      <FaComments />
                   </Button>
@@ -71,9 +71,9 @@ const CustomNavbar = ({ user, onLogout, isAdmin }) => {
 
       {/* Chatbot Modal */}
       <Modal show={showChatbot} onHide={handleCloseChatbot} centered>
-        <Modal.Header closeButton>
-          <Modal.Title>Customer Care</Modal.Title>
-        </Modal.Header>
+      <Modal.Header closeButton className="chat-header"> {/* Apply the chat-header class here */}
+    <Modal.Title>AI Customer Care</Modal.Title>
+  </Modal.Header>
         <Modal.Body>
           <Chatbot />
         </Modal.Body>

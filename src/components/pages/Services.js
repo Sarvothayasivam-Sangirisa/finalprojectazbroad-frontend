@@ -192,7 +192,7 @@ const Services = () => {
   return (
     <section id="services" className="services section bg-light py-5">
       <Container>
-        <h2 className="text-center mb-5" style={{ color: '#8f2347', fontWeight: 'bold', fontSize: '2.5rem' }}>
+        <h2 className="text-center mb-5" style={{ color: '#F8F9FA', fontWeight: 'bold', fontSize: '2.5rem' }}>
           Additional Services
         </h2>
         <Carousel interval={null}>
