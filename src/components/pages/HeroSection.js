@@ -176,6 +176,7 @@
 // };
 
 // export default HeroSection;
+//img change
 import React, { useEffect, useState } from 'react';
 import { Container, Row, Col, Button } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
